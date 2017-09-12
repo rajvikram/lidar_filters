@@ -1,0 +1,70 @@
+\hypertarget{class_temporal_filter}{}\section{Temporal\+Filter Class Reference}
+\label{class_temporal_filter}\index{Temporal\+Filter@{Temporal\+Filter}}
+
+
+Temporal Median filter class.  
+
+
+
+
+{\ttfamily \#include $<$temporal\+Filter.\+hpp$>$}
+
+Inheritance diagram for Temporal\+Filter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_temporal_filter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_temporal_filter_a251e59cf00b8978af4bdb662573ba7f5}{Temporal\+Filter} (int d)
+\item 
+std\+::vector$<$ float $>$ \hyperlink{class_temporal_filter_ae08295aa926fa2bdfc64a5836cc0ac3a}{update} (std\+::vector$<$ float $>$ \&input\+Scanline)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Temporal Median filter class. 
+
+\begin{DoxyAuthor}{Author}
+Raj Singh (\href{mailto:rajvikrams@gmail.com}{\tt rajvikrams@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+09-\/11-\/2017
+\end{DoxyDate}
+Implements an \hyperlink{class_temporal_filter_ae08295aa926fa2bdfc64a5836cc0ac3a}{update()} method that stores a maximumm of last D scanlines internally and returns the median of values over the past scanlines. The class autodetects the cores on the machine and runs one thread per core. It computes the medians across multiple threads. This is obviously useful for large scanlines with a large D. For smaller values the threads introduce an overhead.
+
+\begin{DoxyRemark}{Remarks}
+Maybe in future versions multiple threads are run only for large input data and default s to a single thread for smaller scanlines. 
+\end{DoxyRemark}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_temporal_filter_a251e59cf00b8978af4bdb662573ba7f5}\label{class_temporal_filter_a251e59cf00b8978af4bdb662573ba7f5}} 
+\index{Temporal\+Filter@{Temporal\+Filter}!Temporal\+Filter@{Temporal\+Filter}}
+\index{Temporal\+Filter@{Temporal\+Filter}!Temporal\+Filter@{Temporal\+Filter}}
+\subsubsection{\texorpdfstring{Temporal\+Filter()}{TemporalFilter()}}
+{\footnotesize\ttfamily Temporal\+Filter\+::\+Temporal\+Filter (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor. Takes in D as input 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_temporal_filter_ae08295aa926fa2bdfc64a5836cc0ac3a}\label{class_temporal_filter_ae08295aa926fa2bdfc64a5836cc0ac3a}} 
+\index{Temporal\+Filter@{Temporal\+Filter}!update@{update}}
+\index{update@{update}!Temporal\+Filter@{Temporal\+Filter}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily std\+::vector$<$float$>$ Temporal\+Filter\+::update (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{input\+Scanline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Update method takes in a scanline as a vector. Calculates the median based on the past D scanlines and returns the median values in the input\+Scanline object. 
+
+Implements \hyperlink{class_filter}{Filter}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+temporal\+Filter.\+hpp\end{DoxyCompactItemize}

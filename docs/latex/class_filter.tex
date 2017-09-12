@@ -1,0 +1,53 @@
+\hypertarget{class_filter}{}\section{Filter Class Reference}
+\label{class_filter}\index{Filter@{Filter}}
+
+
+Abstract class used as a base class for the range and temporal median filters.  
+
+
+
+
+{\ttfamily \#include $<$filter.\+hpp$>$}
+
+Inheritance diagram for Filter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_filter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_filter_a3a4cfdec9a607efe139b7648dfda0caf}\label{class_filter_a3a4cfdec9a607efe139b7648dfda0caf}} 
+virtual std\+::vector$<$ float $>$ {\bfseries update} (std\+::vector$<$ float $>$ \&)=0
+\item 
+void \hyperlink{class_filter_a68763fa259eb46616b104d7342d727f1}{filter} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class used as a base class for the range and temporal median filters. 
+
+\begin{DoxyAuthor}{Author}
+Raj Singh (\href{mailto:rajvikrams@gmail.com}{\tt rajvikrams@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+09-\/11-\/2017
+\end{DoxyDate}
+Child classes will have to implement the update() method. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_filter_a68763fa259eb46616b104d7342d727f1}\label{class_filter_a68763fa259eb46616b104d7342d727f1}} 
+\index{Filter@{Filter}!filter@{filter}}
+\index{filter@{filter}!Filter@{Filter}}
+\subsubsection{\texorpdfstring{filter()}{filter()}}
+{\footnotesize\ttfamily void Filter\+::filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Pure virtual update method 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+filter.\+hpp\end{DoxyCompactItemize}

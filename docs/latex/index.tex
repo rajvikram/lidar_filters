@@ -1,0 +1,62 @@
+\hypertarget{index_build_test_sec}{}\section{Build and run unit tests}\label{index_build_test_sec}
+In order to build the code you will need g++, make and pthread. To make and run the tests do \+:
+
+\$$>$ make test
+
+There are two tests in the suite, one for the Range flter and one for the Temporal median filter. Both should show \textquotesingle{}P\+A\+S\+S\+ED\textquotesingle{} if successful or \textquotesingle{}F\+A\+I\+L\+ED\textquotesingle{} on error.\hypertarget{index_build_docs_sec}{}\section{Build this documentation}\label{index_build_docs_sec}
+If you have Doxygen installed you can rebuild this documentartion with
+
+\$$>$ make docs
+
+The documentation main page is at docs/html/index.\+html\hypertarget{index_usage_sec}{}\section{Using the filters}\label{index_usage_sec}
+\hypertarget{index_rangeFilter}{}\subsection{\+: Range\+Filter}\label{index_rangeFilter}
+Example usage \+: 
+\begin{DoxyCodeInclude}
+    
+    \textcolor{comment}{// Create range filter object}
+    \hyperlink{class_range_filter}{RangeFilter} rf(0.03, 50.0); \textcolor{comment}{// Or if using default contructor the min and max are assumed}
+    
+    \textcolor{keywordtype}{float} inArr0[] = \{-10.0, 0.029, 0.03, 10.0, 20.0, 30.0, 40.0, 50.0, 50.1, 60.0\};
+    \textcolor{keywordtype}{float} outArr0[] = \{0.03, 0.03, 0.03, 10.0, 20.0, 30.0, 40.0, 50.0, 50.0, 50.0\}; \textcolor{comment}{// expected output}
+    
+    std::vector<float> inVec0 (inArr0, inArr0 + \textcolor{keyword}{sizeof}(inArr0) / \textcolor{keyword}{sizeof}(inArr0[0]) );
+    std::vector<float> outVec0 (outArr0, outArr0 + \textcolor{keyword}{sizeof}(outArr0) / \textcolor{keyword}{sizeof}(outArr0[0]) );
+    
+    rf.update(inVec0);
+    
+    \textcolor{keywordflow}{if}(!(inVec0 == outVec0)) \{
+        \textcolor{comment}{// Report error for this test and continue}
+        std::cout << \textcolor{stringliteral}{"Range filter returned unexpected output "} << std::endl;
+        std::cout << \textcolor{stringliteral}{"\(\backslash\)nExpected array : "};
+        printVec(outVec0);
+        
+        std::cout << \textcolor{stringliteral}{"\(\backslash\)nReturned array : "};
+        printVec(inVec0);
+        std::cout << std::endl;
+        
+        \textcolor{keywordflow}{throw}(-1);
+    \}
+\end{DoxyCodeInclude}
+ \hypertarget{index_temporalFilter}{}\subsection{\+: Temporal\+Filter}\label{index_temporalFilter}
+Example usage \+: 
+\begin{DoxyCodeInclude}
+    \textcolor{comment}{// create filter object}
+    \hyperlink{class_temporal_filter}{TemporalFilter} tf(3); \textcolor{comment}{// Depth set to 3}
+    
+    \textcolor{comment}{// scanline 1}
+    \textcolor{keywordtype}{float} inArr0[] = \{0.0, 1.0, 2.0, 1.0, 3.0 \};  \textcolor{comment}{// input scanline}
+    \textcolor{keywordtype}{float} outArr0[] = \{0.0, 1.0, 2.0, 1.0, 3.0 \}; \textcolor{comment}{// expected output}
+    
+    std::vector<float> inVec0 (inArr0, inArr0 + \textcolor{keyword}{sizeof}(inArr0) / \textcolor{keyword}{sizeof}(inArr0[0]) );
+    std::vector<float> outVec0 (outArr0, outArr0 + \textcolor{keyword}{sizeof}(outArr0) / \textcolor{keyword}{sizeof}(outArr0[0]) );
+    
+    tf.update(inVec0);
+    
+    \textcolor{keywordflow}{if}(!(inVec0 == outVec0)) \{
+        std::cout << \textcolor{stringliteral}{"\(\backslash\)nExpected : "}; printVec(outVec0);
+        std::cout << \textcolor{stringliteral}{"\(\backslash\)nReceived : "}; printVec(inVec0);
+        
+        \textcolor{keywordflow}{throw}(-1);
+    \}
+    
+\end{DoxyCodeInclude}

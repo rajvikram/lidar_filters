@@ -1,0 +1,75 @@
+\hypertarget{class_range_filter}{}\section{Range\+Filter Class Reference}
+\label{class_range_filter}\index{Range\+Filter@{Range\+Filter}}
+
+
+Range filter class.  
+
+
+
+
+{\ttfamily \#include $<$range\+Filter.\+hpp$>$}
+
+Inheritance diagram for Range\+Filter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_range_filter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_range_filter_ad0b28929ddfb283eb0101b00726d1729}{Range\+Filter} ()
+\item 
+\hyperlink{class_range_filter_afed8c9dea5d2c7857075bfd1f64648a4}{Range\+Filter} (float min, float max)
+\item 
+std\+::vector$<$ float $>$ \hyperlink{class_range_filter_a6160f4ffe6788fb7fe935110ad941568}{update} (std\+::vector$<$ float $>$ \&scan\+Line)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Range filter class. 
+
+\begin{DoxyAuthor}{Author}
+Raj Singh (\href{mailto:rajvikrams@gmail.com}{\tt rajvikrams@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+09-\/11-\/2017
+\end{DoxyDate}
+Implements an update method that clamps scanline values to min and max specified by the constructor. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_range_filter_ad0b28929ddfb283eb0101b00726d1729}\label{class_range_filter_ad0b28929ddfb283eb0101b00726d1729}} 
+\index{Range\+Filter@{Range\+Filter}!Range\+Filter@{Range\+Filter}}
+\index{Range\+Filter@{Range\+Filter}!Range\+Filter@{Range\+Filter}}
+\subsubsection{\texorpdfstring{Range\+Filter()}{RangeFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Range\+Filter\+::\+Range\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor dist\+Min defaults to 0.\+03
+
+dist\+Max defaults to 50.\+0 \mbox{\Hypertarget{class_range_filter_afed8c9dea5d2c7857075bfd1f64648a4}\label{class_range_filter_afed8c9dea5d2c7857075bfd1f64648a4}} 
+\index{Range\+Filter@{Range\+Filter}!Range\+Filter@{Range\+Filter}}
+\index{Range\+Filter@{Range\+Filter}!Range\+Filter@{Range\+Filter}}
+\subsubsection{\texorpdfstring{Range\+Filter()}{RangeFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Range\+Filter\+::\+Range\+Filter (\begin{DoxyParamCaption}\item[{float}]{min,  }\item[{float}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor with min and max 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_range_filter_a6160f4ffe6788fb7fe935110ad941568}\label{class_range_filter_a6160f4ffe6788fb7fe935110ad941568}} 
+\index{Range\+Filter@{Range\+Filter}!update@{update}}
+\index{update@{update}!Range\+Filter@{Range\+Filter}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily std\+::vector$<$float$>$ Range\+Filter\+::update (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$ \&}]{scan\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Method takes in a scanline vector object and clamps the object\textquotesingle{}s values between min and max. Returns the modified object upon success 
+
+Implements \hyperlink{class_filter}{Filter}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+range\+Filter.\+hpp\end{DoxyCompactItemize}

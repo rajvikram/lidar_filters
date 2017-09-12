@@ -8,6 +8,13 @@
 #include <errno.h>
 #include <pthread.h>
 
+/*!
+ *  \brief Struct passed as arguments to the compute threads for temporal median filter
+ *
+ *  \author    Raj Singh (rajvikrams@gmail.com)
+ *  \version   0.1
+ *  \date      09-11-2017
+*/
 struct medianThreadParams {
     int myId;
     int threadPoolCount;
@@ -16,6 +23,17 @@ struct medianThreadParams {
 };
 
 
+/*!
+ *   \brief     Temporal Median filter class
+ *   \author    Raj Singh (rajvikrams@gmail.com)
+ *   \version   0.1
+ *   \date      09-11-2017
+ 
+ *   Implements an update() method that stores a maximumm of last D scanlines internally and returns the median of values over the past scanlines. The class autodetects the cores on the machine and runs one thread per core. It computes the medians across multiple threads. This is obviously useful for large scanlines with a large D. For smaller values the threads introduce an overhead. 
+ 
+  *  \remark    Maybe in future versions multiple threads are run only for large input data and default s to a single thread for smaller scanlines.
+ 
+*/
 class TemporalFilter: public Filter {
 
     private:
@@ -37,12 +55,12 @@ class TemporalFilter: public Filter {
             std::vector< std::vector<float> > *inputScanlines = params->inputScanlines;
             std::vector<float> *outputScanline = params->outputScanline;
             
+            // Get the D and N from the scanlines passed in. Not checking to make sure all scanlines are the same size.
             int D = inputScanlines->size();
             int N = (*inputScanlines)[0].size();
             std::vector<float> tempVector;
             
-            //std::cout << " D = " << D << " N = " << N  << " myId = " << scanlineIdx << std::endl;
-            
+            // This thread will compute medians for multiple elements decided by it's thread id and the total number of threads (stride)
             while (scanlineIdx < N) {
                 
                 float median = 0.0;
@@ -79,6 +97,7 @@ class TemporalFilter: public Filter {
 
     public:
     
+        /*! Default constructor. Takes in D as input */
         TemporalFilter(int d) : D(d) {
             std::cout << std::endl;
             threadPoolCount = std::thread::hardware_concurrency();
@@ -86,6 +105,7 @@ class TemporalFilter: public Filter {
             std::cout << threadPoolCount << " cores detected. Will run " << threadPoolCount << " threads ..." << std::endl;
         }
     
+        /*! Update method takes in a scanline as a vector. Calculates the median based on the past D scanlines and returns the median values in the inputScanline object. */
         std::vector<float> update(std::vector<float> &inputScanline) {
             
             //std::vector<float> outputScanline(inputScanline.size());

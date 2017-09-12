@@ -71,7 +71,7 @@ class TemporalFilter: public Filter {
                 }
                 
                 // Sort the values
-                sort(tempVector.begin(), tempVector.end());
+                std::sort(tempVector.begin(), tempVector.end());
                 
                 if ( D % 2 == 0) {
                     // For even number of values, it's the mid-point of middle two values
@@ -131,7 +131,7 @@ class TemporalFilter: public Filter {
                 
                 if(pthread_create(&tId, NULL, &computeMedians, (void *)params) != 0) {
                     std::cerr << "Could not create pthread successfully : " << strerror(errno) << std::endl;
-                    exit(1);
+                    ::exit(1);
                 }
                 
                 medianThreads.push_back(tId);

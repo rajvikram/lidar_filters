@@ -36,6 +36,7 @@
 #include <iostream>
 #include <vector>
 #include <thread>
+#include <algorithm>
 
 /*!
  *  \brief     Abstract class used as a base class for the range and temporal median filters

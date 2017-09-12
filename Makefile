@@ -1,12 +1,12 @@
 
 
-all: filterTest
+all: test 
 
 clean:
 	rm -f *.o filterTest
 
 test: filterTest.cpp rangeFilter.hpp temporalFilter.hpp
-	g++ filterTest.cpp -o filterTest
+	g++ -std=c++11 filterTest.cpp -lpthread -o filterTest
 	./filterTest
 
 docs: FORCE

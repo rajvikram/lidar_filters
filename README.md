@@ -1,1 +1,1 @@
-[Documentation](docs/html/index/html)
+[CLICK HERE FOR DOCUMENTATION](docs/html/index.html)

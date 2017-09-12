@@ -1,1 +1,4 @@
 *.gch
+filterTest
+filterTest.dSYM
+.DS_Store

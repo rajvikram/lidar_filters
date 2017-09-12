@@ -9,7 +9,7 @@
 class Filter{
     
     public:
-        virtual std::vector<float> update(std::vector<float>) = 0;
+        virtual std::vector<float> update(std::vector<float> &) = 0;
     
         void filter() {};
 

@@ -1,18 +1,13 @@
 
 
-BOOST_CFLAGS = -I /opt/local/include
-
-all: lidar matrixOp
+all: filterTest
 
 clean:
-	rm -f *.o lidar matrixOp
+	rm -f *.o filterTest
 
-filterTest:
-    g++ $(BOOST_CFLAGS) filterTest.cpp
+test: filterTest.cpp
+	g++ -ggdb filterTest.cpp -o filterTest
+	./filterTest
 
-lidar: Lidar.cpp
-	g++ Lidar.cpp -o lidar
 
-matrixOp: MatrixOp.cpp
-	g++ Matrix.cpp -o matrixOp
 

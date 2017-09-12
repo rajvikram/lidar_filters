@@ -18,7 +18,7 @@ class RangeFilter: public Filter {
         RangeFilter(float min, float max) : distMin(min), distMax(max)
         {}
     
-        std::vector<float> update(std::vector<float> scanLine) {
+        std::vector<float> update(std::vector<float> &scanLine) {
             
             for (int i=0; i<scanLine.size(); i++) {
                 // Clamp values between min and max limits
